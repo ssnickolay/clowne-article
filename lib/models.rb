@@ -26,7 +26,7 @@ module AdditionItems
       {
         box: 5_00,
         package: 3_50
-      }[packing_type]
+      }[packing_type.to_sym]
     end
   end
 

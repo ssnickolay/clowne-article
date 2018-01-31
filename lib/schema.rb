@@ -37,8 +37,8 @@ ActiveRecord::Schema.define do
   create_table :addition_items, force: true do |t|
     t.belongs_to :order
     t.integer :sticker_pack_id
-    t.integer :platform, default: 0, null: false
-    t.integer :packing_type, default: 0, null: false
+    t.integer :platform
+    t.integer :packing_type
     t.string :type, null: false
     t.integer :price_cents, default: 0, null: false
     t.timestamps null: true
