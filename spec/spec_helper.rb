@@ -1,4 +1,5 @@
 require_relative '../lib/initializer'
+require_relative 'support/shared_stuff'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

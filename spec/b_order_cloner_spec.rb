@@ -1,4 +1,4 @@
-describe AOrderCloner, with_stuff: true do
+describe BOrderCloner, with_stuff: true do
   describe '.call' do
     it 'clone order' do
       cloned = described_class.call(order)
