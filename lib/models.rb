@@ -16,6 +16,7 @@ class PaymentMethod < ActiveRecord::Base; end
 
 class OrderItem < ActiveRecord::Base
   belongs_to :product
+  scope :available, -> { joins(:product).where(products: { state: :available }) }
 end
 
 class Product < ActiveRecord::Base
