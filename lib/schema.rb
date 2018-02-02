@@ -7,7 +7,7 @@ ActiveRecord::Schema.define do
 
   create_table :promotions, force: true do |t|
     t.integer :discount
-    t.datetime :expires_at
+    t.datetime :expires_at, null: false
   end
 
   create_table :orders, force: true do |t|

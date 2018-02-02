@@ -6,7 +6,12 @@ class Order < ActiveRecord::Base
   has_many :addition_items
 end
 
-class Promotion < ActiveRecord::Base; end
+class Promotion < ActiveRecord::Base
+  def expired?
+    expires_at < DateTime.now
+  end
+end
+
 class PaymentMethod < ActiveRecord::Base; end
 
 class OrderItem < ActiveRecord::Base

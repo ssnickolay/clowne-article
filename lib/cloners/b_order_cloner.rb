@@ -5,7 +5,7 @@ class BOrderCloner < Clowne::Cloner
   trait :repead do
     finalize do |source, record, _params|
       record.promotion_id = nil if source.promotion.expired?
-      record.number = OrderNumberFactory.build
+      record.number = OrderNumberFactory.generate
     end
   end
 

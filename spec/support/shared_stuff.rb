@@ -20,7 +20,31 @@ shared_context 'shared stuff', with_stuff: true do
           order_id: o.id
         )
       end
-      AdditionItems::Packing.create(packing_type: :box, order_id: o.id)
+    end
+  end
+
+  let(:packing_item) do
+    AdditionItems::Packing.create(
+      platform: :ps4,
+      packing_type: :box,
+      order_id: order.id
+    )
+  end
+
+  let(:xbox_game_item) do
+    AdditionItems::Game.create(
+      platform: :xbox,
+      packing_type: :box,
+      order_id: order.id
+    )
+  end
+
+  let(:promotion) do
+    Promotion.create(
+      discount: 100_00,
+      expires_at: DateTime.new(2019, 2, 3, 4, 5, 6)
+    ).tap do |p|
+      order.update_attributes(promotion_id: p.id)
     end
   end
 end
