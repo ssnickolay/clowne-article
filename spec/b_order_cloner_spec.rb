@@ -13,7 +13,7 @@ describe BOrderCloner, with_stuff: true do
       expect(cloned.number).not_to be_nil
 
       expect(cloned.order_items.count).to eq(2)
-      expect(cloned.addition_items.count).to eq(1)
+      expect(cloned.additional_items.count).to eq(1)
     end
 
     it 'werge with exists' do
@@ -25,7 +25,7 @@ describe BOrderCloner, with_stuff: true do
       expect(cloned.number).to eq(current_order.number)
 
       expect(cloned.order_items.count).to eq(2)
-      expect(cloned.addition_items.count).to eq(1)
+      expect(cloned.additional_items.count).to eq(1)
 
       expect(cloned.total_cents).not_to be_zero
     end

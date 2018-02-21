@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :payment_method
 
   has_many :order_items
-  has_many :addition_items
+  has_many :additional_items
 end
 
 class Promotion < ActiveRecord::Base
@@ -22,21 +22,21 @@ end
 class Product < ActiveRecord::Base
   enum state: [:available, :sold_out]
 end
-class AdditionItem < ActiveRecord::Base; end
+class AdditionalItem < ActiveRecord::Base; end
 
-module AdditionItems
-  class Packing < ::AdditionItem
-    enum packing_type: [:box, :package]
+module AdditionalItems
+  class Packaging < ::AdditionalItem
+    enum packaging_type: [:box, :package]
 
     def price_cents
       {
         box: 5_00,
         package: 3_50
-      }[packing_type.to_sym]
+      }[packaging_type.to_sym]
     end
   end
 
-  class Game < ::AdditionItem
+  class Game < ::AdditionalItem
     enum platform: [:xbox, :ps4, :pc]
 
     def price_cents
@@ -44,7 +44,7 @@ module AdditionItems
     end
   end
 
-  class Sticker < ::AdditionItem
+  class Sticker < ::AdditionalItem
     belongs_to :sticker_pack
   end
 end

@@ -23,18 +23,18 @@ shared_context 'shared stuff', with_stuff: true do
     end
   end
 
-  let(:packing_item) do
-    AdditionItems::Packing.create(
+  let(:packaging_item) do
+    AdditionalItems::Packaging.create(
       platform: :ps4,
-      packing_type: :box,
+      packaging_type: :box,
       order_id: order.id
     )
   end
 
   let(:xbox_game_item) do
-    AdditionItems::Game.create(
+    AdditionalItems::Game.create(
       platform: :xbox,
-      packing_type: :box,
+      packaging_type: :box,
       order_id: order.id
     )
   end

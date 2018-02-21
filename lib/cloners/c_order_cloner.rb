@@ -1,5 +1,5 @@
 class COrderCloner < Clowne::Cloner
-  include_association :addition_items
+  include_association :additional_items
 
   trait :repead do
     include_association :order_items, :available
@@ -12,7 +12,7 @@ class COrderCloner < Clowne::Cloner
 
   trait :merge_with_current do
     include_association :order_items, :available, clone_with: CountableOrderItemCloner
-    exclude_association :addition_items
+    exclude_association :additional_items
 
     init_as { |source, current_order:, **| current_order }
   end
@@ -23,8 +23,8 @@ class COrderCloner < Clowne::Cloner
 end
 
 class CountableOrderItemCloner < Clowne::Cloner
-  finalize do |source, record, order_item_count:, **|
-    record.count = order_item_count || 1
+  finalize do |source, record, **|
+    record.count = 1
   end
 
   # or you can do it

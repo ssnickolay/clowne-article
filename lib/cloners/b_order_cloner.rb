@@ -1,5 +1,5 @@
 class BOrderCloner < Clowne::Cloner
-  include_association :addition_items
+  include_association :additional_items
   include_association :order_items, -> (_params) { joins(:product).where(products: { state: :available }) }
 
   trait :repead do

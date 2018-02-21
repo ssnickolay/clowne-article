@@ -14,7 +14,7 @@ describe COrderCloner, with_stuff: true do
 
       expect(cloned.order_items.count).to eq(2)
       expect(cloned.order_items.map(&:count)).to match_array([2, 3])
-      expect(cloned.addition_items.count).to eq(1)
+      expect(cloned.additional_items.count).to eq(1)
     end
 
     it 'werge with exists' do
@@ -31,7 +31,7 @@ describe COrderCloner, with_stuff: true do
 
       expect(cloned.order_items.count).to eq(2)
       expect(cloned.order_items.map(&:count)).to match_array([1, 1])
-      expect(cloned.addition_items.count).to be_zero
+      expect(cloned.additional_items.count).to be_zero
 
       expect(cloned.total_cents).not_to be_zero
     end

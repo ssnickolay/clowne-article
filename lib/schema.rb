@@ -34,11 +34,11 @@ ActiveRecord::Schema.define do
     t.timestamps null: true
   end
 
-  create_table :addition_items, force: true do |t|
+  create_table :additional_items, force: true do |t|
     t.belongs_to :order
     t.integer :sticker_pack_id
     t.integer :platform
-    t.integer :packing_type
+    t.integer :packaging_type
     t.string :type, null: false
     t.integer :price_cents, default: 0, null: false
     t.timestamps null: true

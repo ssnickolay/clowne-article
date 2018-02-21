@@ -12,7 +12,7 @@ class OrderCalculator
   class << self
     def perform(order)
       order.order_items.sum(&:price_cents) +
-        order.addition_items.sum(&:price_cents)
+        order.additional_items.sum(&:price_cents)
     end
   end
 end
