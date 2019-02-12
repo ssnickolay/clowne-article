@@ -19,6 +19,13 @@ ActiveRecord::Schema.define do
     t.timestamps null: true
   end
 
+  create_table :discounts, force: true do |t|
+    t.belongs_to :order
+    t.belongs_to :order_item
+    t.integer :percent, default: 0, null: false
+    t.datetime :ends_at, null: false
+  end
+
   create_table :products, force: true do |t|
     t.string :name
     t.integer :state, default: 0, null: false

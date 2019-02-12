@@ -1,4 +1,4 @@
-describe AOrderCloner, with_stuff: true do
+describe DOrderCloner, with_stuff: true do
   describe '.call' do
     before { packaging_item }
 

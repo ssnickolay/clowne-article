@@ -5,22 +5,35 @@ shared_context 'shared stuff', with_stuff: true do
     end
   end
 
-  let!(:product1) { Product.create(name: 'R2-D2', price_cents: 41_00) }
+  let!(:product1) { Product.create(name: 'R2-D2', price_cents: 100_00) }
   let!(:product2) { Product.create(name: 'C-3PO', price_cents: 28_50) }
   let!(:sold_out_product) { Product.create(name: 'Leia Organa', price_cents: 500_00, state: :sold_out) }
 
   let!(:order) do
     Order.create(number: 'FF4321').tap do |o|
-      [product1, product2, sold_out_product].each_with_index do |product, index|
+      [product1].each_with_index do |product, index|
         count = index + 2
         OrderItem.create(
-          count: count,
+          count: 2,
           product: product,
-          price_cents: count * product.price_cents,
+          price_cents: 1 * product.price_cents,
           order_id: o.id
         )
       end
     end
+  end
+
+  let!(:order_discount) do
+    Discount.create(percent: 20, order: order, ends_at: 1.days.from_now)
+  end
+
+  let!(:order_item_discount) do
+    Discount.create(
+      percent: 10,
+      order: order,
+      order_item_id: order.order_items.sample.id,
+      ends_at: 1.days.from_now
+    )
   end
 
   let(:packaging_item) do
